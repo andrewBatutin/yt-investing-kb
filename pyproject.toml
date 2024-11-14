@@ -1,28 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "yt-investing-kb"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-    "yt-dlp==2024.11.4",
+authors = [
+    { name = "abatutin", email = "abatutin@gmail.com" },
 ]
+description = "YouTube Investing Knowledge Base"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/yt_investing_kb"]
 
 [dependency-groups]
 dev = [
-    "pre-commit==4.0.1",
-    "pytest==8.3.3",
-    "black==24.3.0",
-    "isort==5.13.2",
+    "pre-commit>=3.5.0",
 ]
-
-[tool.black]
-line-length = 88
-target-version = ['py38']
-include = '\.pyi?$'
-
-[tool.ruff]
-line-length = 88
-target-version = "py38"
-select = ["E", "F", "I", "W"]
-fix = true
