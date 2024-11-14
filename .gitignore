@@ -36,3 +36,7 @@ ENV/
 # Test coverage
 .coverage
 htmlcov/
+
+# MacOS
+.DS_Store
+**/.DS_Store
